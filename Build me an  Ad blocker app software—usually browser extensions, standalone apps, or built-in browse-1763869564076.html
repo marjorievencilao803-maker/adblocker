@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShield - Advanced Ad Blocker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .animate-slideInLeft {
+            animation: slideInLeft 0.6s ease-out;
+        }
+        .glow-button {
+            animation: pulse-glow 2s infinite;
+        }
+        .nav-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">⛔</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">AdShield</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="navigateTo('home')" class="nav-link nav-active py-2 text-gray-100 hover:text-blue-400 transition">Home</button>
+                    <button onclick="navigateTo('how-it-works')" class="nav-link py-2 text-gray-100 hover:text-blue-400 transition">How It Works</button>
+                    <button onclick="navigateTo('features')" class="nav-link py-2 text-gray-100 hover:text-blue-400 transition">Features</button>
+                    <button onclick="navigateTo('types')" class="nav-link py-2 text-gray-100 hover:text-blue-400 transition">Types</button>
+                    <button onclick="navigateTo('benefits')" class="nav-link py-2 text-gray-100 hover:text-blue-400 transition">Benefits</button>
+                </div>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-700">
+            <button onclick="navigateTo('home')" class="block w-full text-left px-4 py-2 text-gray-100 hover:bg-gray-600">Home</button>
+            <button onclick="navigateTo('how-it-works')" class="block w-full text-left px-4 py-2 text-gray-100 hover:bg-gray-600">How It Works</button>
+            <button onclick="navigateTo('features')" class="block w-full text-left px-4 py-2 text-gray-100 hover:bg-gray-600">Features</button>
+            <button onclick="navigateTo('types')" class="block w-full text-left px-4 py-2 text-gray-100 hover:bg-gray-600">Types</button>
+            <button onclick="navigateTo('benefits')" class="block w-full text-left px-4 py-2 text-gray-100 hover:bg-gray-600">Benefits</button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-slideInLeft">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                        Block Ads.<br><span class="text-blue-400">Reclaim Privacy.</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">AdShield is the most advanced ad blocker that protects your privacy, speeds up your browsing, and eliminates intrusive ads from the web.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showAlert('Download feature coming soon!')" class="glow-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105">
+                            Download Now
+                        </button>
+                        <button onclick="navigateTo('how-it-works')" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 font-bold py-3 px-8 rounded-lg transition">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="animate-fadeInUp">
+                    <div class="bg-gray-800 rounded-lg p-8 border border-blue-500 shadow-2xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span class="text-lg">99.9% Ad Detection Rate</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span class="text-lg">Lightning Fast Performance</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span class="text-lg">Complete Privacy Protection</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span class="text-lg">Zero Data Collection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">How AdShield Works</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Filter Lists -->
+                <div class="bg-gray-700 p-8 rounded-lg border border-blue-500 hover:shadow-lg hover:shadow-blue-500 transition">
+                    <div class="text-4xl mb-4">📋</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">Filter Lists (Rulesets)</h3>
+                    <p class="text-gray-300 mb-4">Pre-configured rules that identify and block ads:</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>✓ Hiding pop-ups and banners</li>
+                        <li>✓ Blocking autoplay video ads</li>
+                        <li>✓ Removing sponsored content</li>
+                        <li>✓ Using EasyList, uBlock Filters</li>
+                    </ul>
+                </div>
+
+                <!-- Blocking Scripts -->
+                <div class="bg-gray-700 p-8 rounded-lg border border-blue-500 hover:shadow-lg hover:shadow-blue-500 transition">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">Blocking Scripts & Trackers</h3>
+                    <p class="text-gray-300 mb-4">Prevents ad scripts from loading:</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>✓ Google Ads scripts blocked</li>
+                        <li>✓ Facebook tracking pixels stopped</li>
+                        <li>✓ Third-party networks disabled</li>
+                        <li>✓ Stops ads before they appear</li>
+                    </ul>
+                </div>
+
+                <!-- Element Hiding -->
+                <div class="bg-gray-700 p-8 rounded-lg border border-blue-500 hover:shadow-lg hover:shadow-blue-500 transition">
+                    <div class="text-4xl mb-4">👁️</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">Element Hiding</h3>
+                    <p class="text-gray-300 mb-4">Removes embedded ads from webpages:</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>✓ CSS-based blocking</li>
+                        <li>✓ Hides HTML embedded ads</li>
+                        <li>✓ Removes ad containers</li>
+                        <li>✓ Clean page rendering</li>
+                    </ul>
+                </div>
+
+                <!-- Anti-Tracking -->
+                <div class="bg-gray-700 p-8 rounded-lg border border-blue-500 hover:shadow-lg hover:shadow-blue-500 transition">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">Anti-Tracking Features</h3>
+                    <p class="text-gray-300 mb-4">Protects your privacy online:</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>✓ Blocks tracking cookies</li>
+                        <li>✓ Prevents fingerprinting</li>
+                        <li>✓ Stops behavioral tracking</li>
+                        <li>✓ Protects user data</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">Premium Features</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Lightning Speed</h3>
+                    <p class="text-gray-300">Pages load 30-70% faster by blocking heavy ad scripts and trackers</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">🔐</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Privacy First</h3>
+                    <p class="text-gray-300">Complete privacy protection with zero data collection or sharing</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Smart Blocking</h3>
+                    <p class="text-gray-300">Intelligent detection blocks 99.9% of ads without breaking websites</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Real-time Stats</h3>
+                    <p class="text-gray-300">See live statistics of blocked ads and trackers on each website</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">🌐</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Cross-Platform</h3>
+                    <p class="text-gray-300">Works seamlessly on desktop, mobile, and all major browsers</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:scale-105 transition">
+                    <div class="text-5xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Customizable</h3>
+                    <p class="text-gray-300">Fine-tune settings and whitelist trusted websites as needed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types Section -->
+    <section id="types" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">Types of Ad Blockers</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">🧩 Browser Extensions</h3>
+                    <p class="text-gray-100 mb-4">The most common and popular type</p>
+                    <ul class="space-y-2 text-gray-200">
+                        <li>• uBlock Origin</li>
+                        <li>• Adblock Plus</li>
+                        <li>• Ghostery</li>
+                        <li>• Privacy Badger</li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-green-600 to-green-800 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">🌐 Built-in Browser Blockers</h3>
+                    <p class="text-gray-100 mb-4">Native ad blocking in browsers</p>
+                    <ul class="space-y-2 text-gray-200">
+                        <li>• Brave Browser</li>
+                        <li>• Opera</li>
+                        <li>• Microsoft Edge</li>
+                        <li>• Tracking Prevention</li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-purple-600 to-purple-800 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">🌍 DNS-Level Blockers</h3>
+                    <p class="text-gray-100 mb-4">Network-wide ad blocking</p>
+                    <ul class="space-y-2 text-gray-200">
+                        <li>• Pi-hole</li>
+                        <li>• NextDNS</li>
+                        <li>• Blocks entire network</li>
+                        <li>• All devices protected</li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-orange-600 to-orange-800 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">📱 Mobile Ad Blockers</h3>
+                    <p class="text-gray-100 mb-4">Apps and VPN-style filters</p>
+                    <ul class="space-y-2 text-gray-200">
+                        <li>• AdGuard</li>
+                        <li>• 1Blocker (iOS)</li>
+                        <li>• Mobile apps</li>
+                        <li>• VPN integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white">Why Use AdShield?</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Improved User Experience</h3>
+                        <p class="text-gray-300">No annoying pop-ups, banners, or autoplay videos interrupting your browsing</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Faster Page Loading</h3>
+                        <p class="text-gray-300">Ads can slow pages by 30–70%. AdShield eliminates this overhead</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Increased Privacy</h3>
+                        <p class="text-gray-300">Blocks tracking scripts that follow you across the web</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Lower Data Usage</h3>
+                        <p class="text-gray-300">Especially helpful on mobile networks with limited data</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Reduced Security Risks</h3>
+                        <p class="text-gray-300">Prevents malvertising and accidental malware infections</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                            ✓
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Peace of Mind</h3>
+                        <p class="text-gray-300">Browse safely knowing your data and privacy are protected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-white">Ready to Reclaim Your Privacy?</h2>
+            <p class="text-xl text-blue-100 mb-8">Join millions of users already using AdShield</p>
+            <button onclick="showAlert('Download feature coming soon!')" class="glow-button bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-12 rounded-lg transition transform hover:scale-105 text-lg">
+                Download AdShield Today
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-bold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Features</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Pricing</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Download</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">About Us</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Blog</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Contact</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Privacy Policy</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Terms of Service</button></li>
+                        <li><button onclick="showAlert('Feature coming soon')" class="hover:text-blue-400 transition">Cookie Policy</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Follow Us</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="showAlert('Social media coming soon')" class="hover:text-blue-400 transition">Twitter</button></li>
+                        <li><button onclick="showAlert('Social media coming soon')" class="hover:text-blue-400 transition">Facebook</button></li>
+                        <li><button onclick="showAlert('Social media coming soon')" class="hover:text-blue-400 transition">GitHub</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p>&copy; 2025 AdShield. All rights reserved. Privacy is a right, not a privilege.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function navigateTo(section) {
+            const element = document.getElementById(section);
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('nav-active');
+            });
+            event.target.classList.add('nav-active');
+            
+            // Close mobile menu
+            document.getElementById('mobileMenu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showAlert(message) {
+            alert(message);
+        }
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'how-it-works', 'features', 'types', 'benefits'];
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('nav-active');
+                        });
+                        const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => 
+                            link.textContent.toLowerCase().includes(section.split('-')[0])
+                        );
+                        if (activeLink) activeLink.classList.add('nav-active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
